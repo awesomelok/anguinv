@@ -1,0 +1,24 @@
+<header class="header">
+    <ng-progress color="blue" [spinner]="false"></ng-progress>
+
+    <mat-toolbar>
+        <a class="link" routerLink='/'>
+            Logo
+        </a>
+
+        <span class="spacer"></span>
+
+        <button mat-mini-fab color="{{ userIconColor }}" [matTooltip]="userTooltipName" [matMenuTriggerFor]="userMenu">
+            <mat-icon class="mat-24">account_circle</mat-icon>
+        </button>
+
+        <mat-menu #userMenu="matMenu">
+            <a mat-menu-item *ngIf="!(isLoggedIn | async)" routerLink="/login">
+                LogIn
+            </a>
+            <a mat-menu-item *ngIf="!(isLoggedIn | async)" (click)="logout()">
+                LogOut
+            </a>
+        </mat-menu>
+    </mat-toolbar>
+</header>

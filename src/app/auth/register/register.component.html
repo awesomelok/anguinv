@@ -1,0 +1,29 @@
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()" novalidate>
+    <mat-form-field>
+        <input matInput type="email" placeholder="Email" formControlName="email" />
+        <button mat-button *ngIf="authForm.get('email').value" matSuffix mat-icon-button aria-label="Clear" (click)="authForm.reset({email: ''})">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="name" placeholder="Name" formControlName="name" />
+        <button mat-button *ngIf="authForm.get('name').value" matSuffix mat-icon-button aria-label="Clear" (click)="authForm.reset({name: ''})">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="Password Confirmation" formControlName="password_confirmation" />
+    </mat-form-field>
+
+    <button mat-raised-button [disabled]="isSubmitting || !authForm.valid" color="primary" type="submit">
+        Register
+    </button>
+    <button mat-raised-button [disabled]="isSubmitting" (click)="goToLogin()" type="button">
+        Have A Account?
+    </button>
+</form>
